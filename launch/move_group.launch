@@ -1,12 +1,19 @@
+<?xml version="1.0" ?>
 <launch>
 
-  <arg name="load_gripper" default="true" />
+  <arg name="load_gripper" default="false" />
+  <arg name="load_handle" default="false" />
+  <arg name="load_driller" default="false" />
+  <arg name="load_driller_new" default="false" />
 
   <include file="$(find panda_moveit_config)/launch/planning_context.launch">
     <arg name="load_gripper" value="$(arg load_gripper)" />
+    <arg name="load_handle" value="$(arg load_handle)" />
+    <arg name="load_driller" value="$(arg load_driller)" />
+    <arg name="load_driller_new" value="$(arg load_driller_new)" />
   </include>
 
-  <arg name="planner" default="ompl" />
+  <arg name="pipeline" default="ompl" />
 
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
@@ -28,7 +35,7 @@
 
   <!-- Planning Functionality -->
   <include ns="move_group" file="$(find panda_moveit_config)/launch/planning_pipeline.launch.xml">
-    <arg name="pipeline" value="$(arg planner)" />
+    <arg name="pipeline" value="$(arg pipeline)" />
   </include>
 
   <!-- Trajectory Execution Functionality -->

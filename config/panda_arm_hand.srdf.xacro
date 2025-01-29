@@ -34,6 +34,7 @@
   <disable_collisions link1="panda_hand" link2="panda_link4" reason="Never" />
   <disable_collisions link1="panda_hand" link2="panda_link6" reason="Never" />
   <disable_collisions link1="panda_hand" link2="panda_link7" reason="Adjacent" />
+  <disable_collisions link1="panda_hand" link2="panda_link8" reason="Adjacent" />
   <disable_collisions link1="panda_leftfinger" link2="panda_link3" reason="Never" />
   <disable_collisions link1="panda_leftfinger" link2="panda_link4" reason="Never" />
   <disable_collisions link1="panda_leftfinger" link2="panda_link6" reason="Never" />
