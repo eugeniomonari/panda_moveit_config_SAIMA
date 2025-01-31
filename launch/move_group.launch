@@ -2,15 +2,11 @@
 <launch>
 
   <arg name="load_gripper" default="false" />
-  <arg name="load_handle" default="false" />
-  <arg name="load_driller" default="false" />
-  <arg name="load_driller_new" default="false" />
+  <arg name="load_drill_old" default="false" />
 
   <include file="$(find panda_moveit_config)/launch/planning_context.launch">
     <arg name="load_gripper" value="$(arg load_gripper)" />
-    <arg name="load_handle" value="$(arg load_handle)" />
-    <arg name="load_driller" value="$(arg load_driller)" />
-    <arg name="load_driller_new" value="$(arg load_driller_new)" />
+    <arg name="load_drill_old" value="$(arg load_drill_old)" />
   </include>
 
   <arg name="pipeline" default="ompl" />

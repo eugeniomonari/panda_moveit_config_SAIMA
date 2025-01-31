@@ -5,9 +5,7 @@
 
   <arg name="robot_ip" default="172.16.0.2"/>
   <arg name="load_gripper" default="false"/>
-  <arg name="load_handle" default="false"/>
-  <arg name="load_driller" default="false"/>
-  <arg name="load_driller_new" default="false"/>
+  <arg name="load_drill_old" default="false"/>
   <arg name="launch_rviz" default="true" />
   <arg name="launch_franka_control" default="true" />
 
@@ -18,9 +16,7 @@
 
   <include file="$(find panda_moveit_config)/launch/panda_moveit.launch">
     <arg name="load_gripper" value="$(arg load_gripper)"/>
-    <arg name="load_handle" value="$(arg load_handle)"/>
-    <arg name="load_driller" value="$(arg load_driller)"/>
-    <arg name="load_driller_new" value="$(arg load_driller_new)"/>
+    <arg name="load_drill_old" value="$(arg load_drill_old)"/>
   </include>
 
   <include file="$(find panda_moveit_config)/launch/moveit_rviz.launch" if="$(arg launch_rviz)"/>

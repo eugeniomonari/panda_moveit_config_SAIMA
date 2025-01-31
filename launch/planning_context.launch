@@ -1,8 +1,6 @@
 <launch>
   <arg name="load_gripper" default="false" />
-  <arg name="load_handle" default="false" />
-  <arg name="load_driller" default="false" />
-  <arg name="load_driller_new" default="false" />
+  <arg name="load_drill_old" default="false" />
 
   <!-- By default we overwrite the URDF. Change the following to false to change the default behavior -->
   <arg name="load_robot_description" default="true"/>
@@ -11,18 +9,14 @@
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Load universal robot description format (URDF) -->
-  <param if="$(eval arg('load_robot_description') and arg('load_gripper') and not arg('load_handle') and not arg('load_driller'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm_hand.urdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and arg('load_handle') and not arg('load_gripper') and not arg('load_driller'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm_handle.urdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and arg('load_driller') and not arg('load_gripper') and not arg('load_handle'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm_driller.urdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and arg('load_driller_new') and not arg('load_gripper') and not arg('load_handle'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm_driller_new.urdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and not arg('load_gripper') and not arg('load_handle') and not arg('load_driller') and not arg('load_driller_new'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm.urdf.xacro'"/>
+  <param if="$(eval arg('load_robot_description') and arg('load_gripper'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm_hand.urdf.xacro'"/>
+  <param if="$(eval arg('load_robot_description') and arg('load_drill_old'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm_drill_old.urdf.xacro'"/>
+  <param if="$(eval arg('load_robot_description') and not arg('load_gripper') and not arg('load_drill_old'))" name="$(arg robot_description)" command="$(find xacro)/xacro '$(find franka_description)/robots/panda_arm.urdf.xacro'"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param if="$(eval arg('load_robot_description') and arg('load_gripper') and not arg('load_handle') and not arg('load_driller'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm_hand.srdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and arg('load_handle') and not arg('load_gripper') and not arg('load_driller'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm_handle.srdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and arg('load_driller') and not arg('load_gripper') and not arg('load_handle'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm_driller.srdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and arg('load_driller_new') and not arg('load_gripper') and not arg('load_handle'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm_driller_new.srdf.xacro'"/>
-  <param if="$(eval arg('load_robot_description') and not arg('load_gripper') and not arg('load_handle') and not arg('load_driller') and not arg('load_driller_new'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm.srdf.xacro'"/>
+  <param if="$(eval arg('load_robot_description') and arg('load_gripper'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm_hand.srdf.xacro'"/>
+  <param if="$(eval arg('load_robot_description') and arg('load_drill_old'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm_drill_old.srdf.xacro'"/>
+  <param if="$(eval arg('load_robot_description') and not arg('load_gripper') and not arg('load_drill_old'))" name="$(arg robot_description)_semantic" command="$(find xacro)/xacro '$(find panda_moveit_config)/config/panda_arm.srdf.xacro'"/>
 
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">

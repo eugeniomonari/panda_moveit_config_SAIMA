@@ -16,9 +16,9 @@
   <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
   <!-- <end_effector name="driller" parent_link="panda_link8" group="driller" parent_group="panda_arm" /> -->
   <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-  <disable_collisions link1="panda_driller_new" link2="panda_link6" reason="Never" />
-  <disable_collisions link1="panda_driller_new" link2="panda_link7" reason="Default" />
-  <disable_collisions link1="panda_driller_new" link2="panda_link8" reason="Adjacent" />
+  <disable_collisions link1="panda_drill_old" link2="panda_link6" reason="Never" />
+  <disable_collisions link1="panda_drill_old" link2="panda_link7" reason="Default" />
+  <disable_collisions link1="panda_drill_old" link2="panda_link8" reason="Adjacent" />
 <!--  <disable_collisions link1="panda_driller_link2" link2="panda_link6" reason="Never" />
   <disable_collisions link1="panda_driller_link2" link2="panda_link7" reason="Default" />
   <disable_collisions link1="panda_driller_link2" link2="panda_link8" reason="Adjacent" />
